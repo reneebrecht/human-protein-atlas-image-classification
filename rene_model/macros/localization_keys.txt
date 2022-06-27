@@ -1,0 +1,28 @@
+0.  Nucleoplasm			whole nucleus without nucleoli, can vary from smooth to punctuate
+1.  Nuclear membrane		thin circle around nucleus, can have folds circles also inside nucleus
+2.  Nucleoli			slightly elongated circular areas in nucleoplasm
+3.  Nucleoli fibrillar center	dense fibrils, spotty clusters inside nucleolus 
+4.  Nuclear speckles		irregular mottled spots in nucleoplasm  
+5.  Nuclear bodies   		distinct membrane-less spots, vary in size and numbers
+6.  Endoplasmic reticulum   	network-like in cytosol, close to nucleus
+7.  Golgi apparatus   		next to nucleus close to centrosome, vary in morphology
+8.  Peroxisomes   		vesicles spread throughout the cell, vary in number size and shape
+9.  Endosomes   			vesicles close to nucleus and Golgi 
+10.  Lysosomes   		vesicles close to Golgi, larger than endosomes
+11.  Intermediate filaments   	network dense in perinuclear region, slightly tangled, not microtubule
+12.  Actin filaments   		conc. in prox.to plasma membrane, cell cortex, long straight bundles
+13.  Focal adhesion sites   	dense elongated plaques in plasma membrane
+14.  Microtubules   		thin strands throughout the whole cell, originate from centrosome
+15.  Microtubule ends  		sprinkled pattern, outermost tip of microtubule 
+16.  Cytokinetic bridge   	intracellular bridge cytokinesis, tightly bundled microtubules, gap
+17.  Mitotic spindle   		microtubules radiating from the centrosomes, condensed DAPI
+18.  Microt. org. cent. MTOC  	centre of microtubules, stars
+19.  Centrosome   		interphase one or two spots close to nucleus
+20.  Lipid droplets   		vary in size and number, larger ones ring-like appearance hydrophobic core
+21.  Plasma membrane   		edge around cell, ruffles, uniform across entire cell
+22.  Cell junctions   		at contact sites, small patches or long stretches
+23.  Mitochondria   		thread-like pattern along microtubules
+24.  Aggresome   		dense cytoplasmatic inclusion
+25.  Cytosol   			smooth to granular, often stronger close to nucleus
+26.  Cytoplasmic bodies   	granular assemblies, usually bigger and lower numbers than vesicles
+27.  Rods & rings  		look like rods and rings, vary in size but are quite large
