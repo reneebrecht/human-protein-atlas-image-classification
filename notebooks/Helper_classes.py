@@ -66,6 +66,8 @@ class Location_in_Target(object):
             labels: DataFrame with all picture names and Targets       
         '''
         import numpy as np
+        import random
+        RSEED = 23
         
         pictures = [label.Id  for index, label in labels.iterrows() 
                               if str(self.location) in label.Target]
@@ -75,7 +77,10 @@ class Location_in_Target(object):
         number_needed_pictures= len(pictures)
         pictures = [label.Id  for index, label in labels.iterrows() 
                               if str(self.location) not in label.Target]
-        self.save_pictures(np.random.choice(pictures, number_needed_pictures),
+        
+        random.Random(RSEED).shuffle(pictures)
+        pictures_other_label = pictures[:number_needed_pictures]
+        self.save_pictures(pictures_other_label,
                                 f'pictures_without_location_{self.location}')
 
 
@@ -177,7 +182,7 @@ class Prepared_Test_Train_Data(object):
     def splitter(self):
         ''' Split data into train and test set'''
         from sklearn.model_selection import train_test_split
-        return train_test_split(self.df_feats, self.targets, random_state= self.rseed)
+        return train_test_split(self.df_feats, self.targets, random_state= self.rseed, stratify= self.targets)
 
 class Prepare_NN_for_pipline(object):
     ''' Models with neural networks need extra preparation to work in pipelines. This class 
