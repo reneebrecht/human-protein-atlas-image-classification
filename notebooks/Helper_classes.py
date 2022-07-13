@@ -71,6 +71,10 @@ class Location_in_Target(object):
         
         pictures = [label.Id  for index, label in labels.iterrows() 
                               if str(self.location) in label.Target]
+        if len(pictures) > len(labels)/2:
+            random.Random(RSEED).shuffle(pictures)
+
+            pictures = pictures[:(len(labels)-len(pictures))]
         self.save_pictures(pictures, f'pictures_with_location_{self.location}')
         #The number of pictures labeled with the given location is needed to get the 
         #same number of pictures not labeled with the location
@@ -82,7 +86,6 @@ class Location_in_Target(object):
         pictures_other_label = pictures[:number_needed_pictures]
         self.save_pictures(pictures_other_label,
                                 f'pictures_without_location_{self.location}')
-
 
 class Bin_Embedding(object):
     '''Get the right embeddings for given picture names
