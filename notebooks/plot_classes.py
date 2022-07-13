@@ -82,7 +82,6 @@ class OrderLabels(object):
         df_count_labels = df_count_labels.sort_values('count', ascending=False).reset_index()
         self.df_order = df_count_labels.rename_axis('occurence_order').reset_index()
 
-        return self.df_order
 
     def plot_ordered_labels(self):
         '''Plot an ordered data frame
@@ -378,15 +377,12 @@ class MulticlassPlots(object):
         ax.axhline(ynew, linestyle=':', color='grey', label='50 %')
         plt.legend(fontsize=14);
 
-    def plot_f1_score_with_train(self, f1_score_train):
+    def plot_f1_score_with_train(self):
         '''Plot F1 score for all labels with F1_score for training
         '''
         import pandas as pd
         import seaborn as sns
         import matplotlib.pyplot as plt
-
-        #put f1_score for data in table
-        self.df_metrics_o['f1_score_train'] = f1_score_train
 
         fig,ax = plt.subplots(figsize=(21,3))
 
