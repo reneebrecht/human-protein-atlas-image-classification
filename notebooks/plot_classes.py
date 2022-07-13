@@ -82,7 +82,6 @@ class OrderLabels(object):
         df_count_labels = df_count_labels.sort_values('count', ascending=False).reset_index()
         self.df_order = df_count_labels.rename_axis('occurence_order').reset_index()
 
-        return self.df_order
 
     def plot_ordered_labels(self):
         '''Plot an ordered data frame
@@ -240,7 +239,9 @@ class MulticlassPlots(object):
         plot_confusion_instances()
             Plot confusion instances TP, FN, FP
         plot_share_of_positives(self):
-            Plot true positives (TP) as a share of all positives (TP + FN)        
+            Plot true positives (TP) as a share of all positives (TP + FN) 
+        plot_f1_score_with_train(self, f1_score_train):
+            Plot F1 score for all labels with F1_score for training
     '''
     
     def __init__(self, df_metrics_o): 
@@ -375,3 +376,34 @@ class MulticlassPlots(object):
         ynew = 50
         ax.axhline(ynew, linestyle=':', color='grey', label='50 %')
         plt.legend(fontsize=14);
+
+    def plot_f1_score_with_train(self):
+        '''Plot F1 score for all labels with F1_score for training
+        '''
+        import pandas as pd
+        import seaborn as sns
+        import matplotlib.pyplot as plt
+
+        fig,ax = plt.subplots(figsize=(21,3))
+
+        sns.set(style="ticks")
+        sns.axes_style("ticks")
+
+        sns.scatterplot(x='occurence_order', y='f1', data=self.df_metrics_o, color='#4C9A2A', s=500, label='F1-score')
+        sns.scatterplot(x='occurence_order', y='f1_score_train', data=self.df_metrics_o, color='#4C9A2A', s=500, label='F1-score', alpha = 0.2)
+
+
+        plt.ylim(-0.1,1.1)
+        plt.xticks(self.df_metrics_o['occurence_order'])
+        plt.xlabel('protein localization', fontsize=18)
+        plt.ylabel(' bad         good', fontsize=18)
+
+        xlab = self.df_metrics_o['key'].astype(str).to_list()
+        ax.set_xticklabels(xlab, fontsize=18)
+        ax.xaxis.grid(True)
+        ax.tick_params(axis='y', labelsize=18)
+        ax.get_legend().remove()
+
+        ynew = 0.5
+        ax.axhline(ynew, linestyle=':', color='grey', label='magic line')
+        sns.despine(left=True, bottom=True);
