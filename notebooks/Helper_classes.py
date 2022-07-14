@@ -54,7 +54,7 @@ class Location_in_Target(object):
 
         return self.pictures
 
-    def determine_pictures(self, labels):
+    def determine_pictures(self, labels, rseed = 23):
         ''' First the names of the pictures labeled with the given location are 
             saved in a list and the method to save it in a DataFrame column is 
             called. 
@@ -67,12 +67,11 @@ class Location_in_Target(object):
         '''
         import numpy as np
         import random
-        RSEED = 23
         
         pictures = [label.Id  for index, label in labels.iterrows() 
                               if str(self.location) in label.Target]
         if len(pictures) > len(labels)/2:
-            random.Random(RSEED).shuffle(pictures)
+            random.Random(rseed).shuffle(pictures)
 
             pictures = pictures[:(len(labels)-len(pictures))]
         self.save_pictures(pictures, f'pictures_with_location_{self.location}')
@@ -82,7 +81,7 @@ class Location_in_Target(object):
         pictures = [label.Id  for index, label in labels.iterrows() 
                               if str(self.location) not in label.Target]
         
-        random.Random(RSEED).shuffle(pictures)
+        random.Random(rseed).shuffle(pictures)
         pictures_other_label = pictures[:number_needed_pictures]
         self.save_pictures(pictures_other_label,
                                 f'pictures_without_location_{self.location}')
