@@ -69,7 +69,7 @@ class Location_in_Target(object):
         import random
         
         pictures = [label.Id  for index, label in labels.iterrows() 
-                              if str(self.location) in label.Target]
+                              if str(self.location) in label.Target.split()]
         if len(pictures) > len(labels)/2:
             random.Random(rseed).shuffle(pictures)
 
@@ -79,7 +79,7 @@ class Location_in_Target(object):
         #same number of pictures not labeled with the location
         number_needed_pictures= len(pictures)
         pictures = [label.Id  for index, label in labels.iterrows() 
-                              if str(self.location) not in label.Target]
+                              if str(self.location) not in label.Target.split()]
         
         random.Random(rseed).shuffle(pictures)
         pictures_other_label = pictures[:number_needed_pictures]
