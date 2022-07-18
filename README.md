@@ -36,7 +36,7 @@ In our team are three studied biologists how can identify the locations of prote
 In the notebooks in this repository we documented our work. If you comprehend our work, please feel free to read:
  - [First: EDA](https://github.com/reneebrecht/human-protein-atlas-image-classification/blob/main/notebooks/EDA.ipynb)
 
-If you want to run the notebooks you have to save the data from the [challenge](https://www.kaggle.com/competitions/human-protein-atlas-image-classification/overview) in a new created folder `train` in [data](https://github.com/reneebrecht/human-protein-atlas-image-classification/tree/main/data). You also need the empty folders embeddings_train and images_train_tfrec in this directory. 
+If you want to run the notebooks you have to save the data from the [challenge](https://www.kaggle.com/competitions/human-protein-atlas-image-classification/overview) in a new created folder `train` in [data](https://github.com/reneebrecht/human-protein-atlas-image-classification/tree/main/data). You also need the empty folders `embeddings_train` and `images_train_tfrec` in this directory. 
 ## The results
 The best models we got for all of the location are saved in the folder [models](https://github.com/reneebrecht/human-protein-atlas-image-classification/tree/main/models).
 We archived a macro f1-score of 0.67.
