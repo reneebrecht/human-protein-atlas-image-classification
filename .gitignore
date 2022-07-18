@@ -130,6 +130,11 @@ dmypy.json
 
 
 data/*.csv
+!data/train_baseline/baseline_images.csv
+data/*.parquet
+data/*.tfrec
+data/*.png
+
 models/*.sav
 mlruns
 models/*
