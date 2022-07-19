@@ -134,10 +134,12 @@ data/*.csv
 data/*.parquet
 data/*.tfrec
 data/*.png
+!data/train
 
 models/*.sav
 mlruns
-models/*
 
 #config file has sensitive data
 .mlflow_uri
+
+.DS_Store
