@@ -1,14 +1,15 @@
 # Capstone Project: Human Protein Atlas Image Classification
 
-In this project we are building machine learning classification models for automated image analysis. We aim to identify locations of proteins inside human cells.  <br>
-A protein's location can be connected to its activity and is therefore a target for pharmaceutical research e.g. while finding a vaccine. Our advanced methods can help researchers save time and money.<br>
-The data and the idea of the project is from a [challenge](https://www.kaggle.com/competitions/human-protein-atlas-image-classification/overview). We've got 31072 different packages with four pictures each. The first of the four pictures shows the fluorescent protein and the other three show markers which are used to identify the location.<br>
-The pictures of one package can include one or more locations. 
+In this project we are building machine learning classification models for automated image analysis. We aim to identify the subcellular locations of proteins inside cultured human cells.  <br>
+A protein's location can is connected to its activity within the cell. The location can therefore be a target for pharmaceutical research e.g. while finding a vaccine. Our advanced methods could help researchers to speed up the image analysis process and allow for high troughput imaging.<br>
+The data and the idea for the project are from [this](https://www.kaggle.com/competitions/human-protein-atlas-image-classification/overview) kaggle challenge.<br> 
+The data are images of cultured human cells. The cells were stained with antibodies and imaged on a fluorescence microscope. The dataset holds 31072 different image stacks. Each stack contains four pictures: from the blue, green, yellow and red channnel of the microscope. The blue, yellow and red channel each contain one spatial marker, that serves as an identifier for one subcellular structure/location. The green channel contains the spatial informaton of the protein of interest, who's location is supposed to be determined.<br>
+The protein of interest can be located in more than one location, which makes this task a multi-lable classification problem. 
 
 ## Modification of the challenge for our project
-The winner model has a score 0.59369. By building a model from scratch we won't hardly improve this result. So we decide to modify the challenge. <br>
-The data is highly imbalanced. The two locations most often find in the pictures are on 56,3% of the pictures. <br>
-To overcome the imbalance we decide on building 28 binary models. Each of these models is trained for one possible location and predict if there is this one location on the picture ore not.
+The kaggle challenge prompts to use the macro f1 score as metric. The winning model has a macro f1 score 0.59369. Due to time and hardware contrains we decided to modify the challenge to meet our circumstances. Instead of using a pretrained neural network (e.g. ResNet34) like the winner group, we implemented a series of binary classification models for each location, as they are computationaly cheaper. <br>
+The second reason for using binary models is that the data at hand are highly imbalanced. To overcome the imbalance we decided to build 28 binary models, one for each location. Our 28 binary models are comparably good at handling imbalanced data as each of them is trained for a single location to predict if the protein of interest is present in this location or not.<br>
+ .
 
 ## Requirements:
 

@@ -134,7 +134,9 @@ data/*.csv
 data/*.parquet
 data/*.tfrec
 data/*.png
-!data/train
+data/train/*
+data/embeddings_train/*
+data/images_train_tfrec/*
 
 models/*.sav
 mlruns
