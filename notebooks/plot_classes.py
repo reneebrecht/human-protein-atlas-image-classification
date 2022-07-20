@@ -252,7 +252,7 @@ class MulticlassPlots(object):
         '''
         self.df_metrics_o = df_metrics_o   
 
-    def plot_f1_score(self):
+    def plot_f1_score(self, mean=0):
         '''Plot F1 score for all labels
         '''
         import seaborn as sns
@@ -278,6 +278,8 @@ class MulticlassPlots(object):
 
         ynew = 0.5
         ax.axhline(ynew, linestyle=':', color='grey', label='magic line')
+        if mean != 0:
+            ax.axhline(mean, linestyle=':', color='green', label='mean')
         sns.despine(left=True, bottom=True);
 
 
@@ -406,4 +408,39 @@ class MulticlassPlots(object):
 
         ynew = 0.5
         ax.axhline(ynew, linestyle=':', color='grey', label='magic line')
+        sns.despine(left=True, bottom=True);
+
+    def plot_f1_score_with_other_model(self, other_model, mean = 0, other_model_mean = 0):
+        '''Plot F1 score for all labels with F1_score for any other model
+        '''
+        import pandas as pd
+        import seaborn as sns
+        import matplotlib.pyplot as plt
+
+        fig,ax = plt.subplots(figsize=(21,3))
+
+        sns.set(style="ticks")
+        sns.axes_style("ticks")
+
+        sns.scatterplot(x='occurence_order', y='f1', data=self.df_metrics_o, color='#4C9A2A', s=500, label='F1-score')
+        sns.scatterplot(x='occurence_order', y='f1', data=other_model, color='#4C9A2A', s=500, label='F1-score other model', alpha = 0.2)
+
+
+        plt.ylim(-0.1,1.1)
+        plt.xticks(self.df_metrics_o['occurence_order'])
+        plt.xlabel('protein localization', fontsize=18)
+        plt.ylabel(' bad         good', fontsize=18)
+
+        xlab = self.df_metrics_o['key'].astype(str).to_list()
+        ax.set_xticklabels(xlab, fontsize=18)
+        ax.xaxis.grid(True)
+        ax.tick_params(axis='y', labelsize=18)
+        ax.get_legend().remove()
+
+        ynew = 0.5
+        ax.axhline(ynew, linestyle=':', color='grey', label='magic line')
+        if mean != 0:
+            ax.axhline(mean, linestyle=':', color='green', label='mean')
+        if other_model_mean != 0:
+            ax.axhline(other_model_mean, linestyle=':', color='green', label='mean', alpha = 0.2)
         sns.despine(left=True, bottom=True);
