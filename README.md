@@ -55,6 +55,6 @@ We achieved a macro f1-score of 0.67, and as shown in this plot of f1 scores, ou
 
 <br>
 
-![f1 scores for the baseline and trained model](./images/narrow_f1_scatter_final_model_ExT_elnf_r28.png)
+![f1 scores for the baseline and trained model](./images/dark_narrow_f1_scatter_final_model_ExT_elnf_r28.png)
 
 <br>
